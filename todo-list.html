@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Lista de tarefas</title>
+        <title>Todo list</title>
+        <link rel="stylesheet" href="css/v3-todo-list.css">
     </head>
     <body>
-        <h1>Lista de tarefas</h1>
+        <h1>Todo list</h1>
+        <div class="div-grid-input">
+            <input placeholder="Todo name" 
+            class="js-input-name input-name">
+            <input type="date"
+            class="js-input-date input-date">
+            
+            <button onclick="
+                addToList()
+            " class="
+                button-add
+            ">Add</button>
+        </div>
         
-        <input placeholder="Nome da tarefa"
-        class="js-input-name">
-
-        <button onclick="addToList()">Adicionar</button>
+        <div class="js-container-output div-grid"></div>
         
-        <div class="js-paragraph-output" ></div>
-
         <script src="scripts/todo-list.js"></script>
     </body>
 </html>
