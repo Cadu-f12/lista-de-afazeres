@@ -1,22 +1,46 @@
-const todoList = [];
+const todoList = [{
+    name: 'Make dinner',
+    date: '2020-12-02'
+}];
+
+renderTodoList();
 
 function addToList() {
-    const inputElement = document.querySelector('.js-input-name');
-    todoList.push(inputElement.value);
-
-    renderHTML();
-
-    inputElement.value = '';
-}
-function renderHTML() {
-    const paragraphElement = document
-        .querySelector('.js-paragraph-output');
+    const inputNameElement = document.querySelector('.js-input-name');
+    const inputDateElement = document.querySelector('.js-input-date');
     
-    let text = '';
+    todoList.push({
+        name: inputNameElement.value,
+        date: inputDateElement.value
+    });
+
+    renderTodoList();
+
+    inputNameElement.value = '';
+}
+function renderTodoList() {
+    const divElement = document
+        .querySelector('.js-container-output');
+
+    let html = '';
 
     for (i = 0; i < todoList.length; i++) {
-        text += `<p>${todoList[i]}</p>`;
+        const todoObject = todoList[i];
+        const {name, date} = todoObject;
+
+        html += `
+       
+        <div>${name}</div>
+        <div>${date}</div>
+        <button onclick="
+            todoList.splice(${i}, 1);
+            renderTodoList();
+        " class="
+            button-delete
+        "
+        >Delete</button>
+        `;
     }
 
-    paragraphElement.innerHTML = text;
+    divElement.innerHTML = html;
 }
